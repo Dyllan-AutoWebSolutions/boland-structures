@@ -66,12 +66,6 @@ h1, h2, h3, h4, p { margin: 0; }
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: 64px 0; }
 
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-head); font-size: .72rem; font-weight: 600;
-  letter-spacing: .22em; text-transform: uppercase; color: var(--rust);
-}
-.eyebrow::after { content: ""; width: 40px; height: 2px; background: var(--rust); }
 
 .section-title {
   font-family: var(--font-head); font-weight: 800; text-transform: uppercase;
@@ -246,7 +240,6 @@ body { padding-bottom: 56px; }
 .is-active .hero__content > * { opacity: 1; transform: none; }
 .is-active .hero__content > :nth-child(2) { transition-delay: .12s; }
 .is-active .hero__content > :nth-child(3) { transition-delay: .24s; }
-.hero__eyebrow { color: var(--white); }
 .hero__title {
   margin: 14px 0 24px;
   font-family: var(--font-head); font-weight: 800; text-transform: uppercase;
@@ -710,7 +703,6 @@ body { padding-bottom: 56px; }
 }
 .split__badge strong { display: block; font-family: var(--font-head); font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--rust); }
 .split__badge span { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
-.split__body .section-title { margin-top: 12px; }
 .split__body p { color: var(--muted); margin-top: 16px; }
 .split__body .lede { color: var(--ink); font-size: 1.1rem; font-weight: 500; }
 .signoff { display: flex; align-items: center; gap: 14px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
@@ -854,11 +846,6 @@ body { padding-bottom: 56px; }
 /* ---------- Service detail ---------- */
 .svc-detail { scroll-margin-top: calc(var(--header-h) + 64px); }
 .svc-detail--alt { background: var(--paper); }
-.svc-detail__num {
-  display: inline-block; vertical-align: middle; margin-right: 12px;
-  font-family: var(--font-head); font-weight: 800; font-size: 1.6rem; line-height: 1; color: var(--rust);
-}
-.svc-detail__num + .eyebrow { vertical-align: middle; }
 .facts {
   display: grid; grid-template-columns: repeat(3, 1fr); margin: 24px 0 0;
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);

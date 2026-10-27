@@ -248,7 +248,6 @@ def service_main(s, all_services, areas):
         <div class="split__badge"><strong>5 yr</strong><span>Workmanship guarantee</span></div>
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">{s["eyebrow"]}</span>
         <h2 class="section-title" id="intro-title">{s["intro_h2"]}</h2>
         <p class="lede">{s["lede"]}</p>
         {paras}
@@ -287,7 +286,6 @@ def service_main(s, all_services, areas):
         <img src="{R}assets/img/{s["cost_img"]}" alt="{s["cost_alt"]}" width="1200" height="900" loading="lazy">
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">Costs &amp; timing</span>
         <h2 class="section-title" id="cost-title">{s["cost_h2"]}</h2>
         <p>{s["cost_intro"]}</p>
         <ol class="factors">{factors}</ol>
@@ -316,8 +314,7 @@ def service_main(s, all_services, areas):
     <div class="container">
       <div class="projects__head reveal">
         <div>
-          <span class="eyebrow">Recent work</span>
-          <h2 class="section-title" id="projects-title" style="margin-top:12px">{s["projects_title"]}</h2>
+          <h2 class="section-title" id="projects-title">{s["projects_title"]}</h2>
         </div>
         <a class="text-link" href="{R}projects.html">All projects <svg><use href="#i-arrow"/></svg></a>
       </div>
@@ -562,7 +559,6 @@ def project_main(p, prev_p, next_p):
         <div class="split__badge"><strong>{p["year"]}</strong><span>Completed</span></div>
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">Case study</span>
         <h2 class="section-title" id="story-title">The <span>project</span></h2>
         <h3 class="sub">The brief</h3>
         <p>{p["brief"]}</p>
@@ -735,7 +731,6 @@ def team_main(t):
         <div class="split__badge"><strong>{total}</strong><span>People on our team</span></div>
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">Our team</span>
         <h2 class="section-title" id="intro-title">Local crews, <span>one standard</span></h2>
         <p class="lede">Every Boland Structures project is built by our own people, not a chain of subcontractors you've never met.</p>
         <p>Our crews live in Worcester, Rawsonville, De Doorns and Robertson. They build in the towns they live in, so they care about doing it properly. The average crew member has been with us for nine years.</p>
@@ -791,7 +786,6 @@ def team_main(t):
         <img src="{R}assets/img/team-apprentices.jpg" alt="Senior bricklayer checking an apprentice's block wall with a spirit level" width="1200" height="900" loading="lazy">
       </div>
       <div class="split__body reveal">
-        <span class="eyebrow">Apprenticeships</span>
         <h2 class="section-title" id="apprentice-title">Training the <span>next generation</span></h2>
         <p>The Boland is short of qualified tradespeople, so we train our own. Every year we take on apprentices from the Breede Valley and pair them with our most experienced builders.</p>
         <ul class="checklist">{points}</ul>

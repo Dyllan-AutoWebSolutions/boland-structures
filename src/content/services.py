@@ -27,7 +27,6 @@ SERVICES = [
         "hero_focus": "50% 70%",
         "h1": "Building contractor <span>in Worcester</span>",
         "hero_lead": "New homes, wine cellars, packhouses, warehouses and schools, built by one team from foundation to handover across the Boland and Breede River Valley.",
-        "eyebrow": "New builds",
         "intro_h2": "One contractor, <span>start to finish</span>",
         "lede": "Boland Structures is an NHBRC-registered, CIDB Grade 6 GB building contractor based in Worcester. We build residential, agricultural, commercial and public buildings from 150 m² to 5 000 m², and every project is a fixed-price contract.",
         "intro_paras": [
@@ -98,7 +97,6 @@ SERVICES = [
         "hero_focus": "50% 50%",
         "h1": "Home renovations <span>in Worcester</span>",
         "hero_lead": "Extensions, second storeys, kitchens, bathrooms and farm building conversions across the Boland. Fixed price, clean sites, and you can keep living at home.",
-        "eyebrow": "Renovations &amp; extensions",
         "intro_h2": "Renovate without <span>the chaos</span>",
         "lede": "Boland Structures does home renovations and extensions in Worcester and across the Boland, for houses, offices and farm buildings. We quote a fixed price, phase the work so you can keep living at home, and back every job with a 5-year workmanship guarantee.",
         "intro_paras": [
@@ -169,7 +167,6 @@ SERVICES = [
         "hero_focus": "50% 40%",
         "h1": "Building plans <span>in Worcester</span>",
         "hero_lead": "Building plans, municipal approvals, engineering and a fixed-price quote for your project, all from one team in Worcester.",
-        "eyebrow": "Planning &amp; approvals",
         "intro_h2": "Get the plan right, <span>get the price right</span>",
         "lede": "Boland Structures draws building plans in Worcester, submits them for municipal approval and prices your project before construction starts. The same team that plans your project also builds it, so the plans are drawn to a budget as well as a design.",
         "intro_paras": [
@@ -240,7 +237,6 @@ SERVICES = [
         "hero_focus": "50% 40%",
         "h1": "Concrete contractor <span>in Worcester</span>",
         "hero_lead": "Foundations, slabs, power-floated floors, retaining walls and water tanks, poured by our own crew and signed off by an engineer.",
-        "eyebrow": "Concrete works",
         "intro_h2": "Concrete done right <span>the first time</span>",
         "lede": "Boland Structures is a concrete contractor in Worcester, pouring foundations, slabs, industrial floors, retaining walls and water-retaining structures across the Boland. Our own crew does every pour, every pour is cube-tested, and every structural element is signed off by an engineer.",
         "intro_paras": [
