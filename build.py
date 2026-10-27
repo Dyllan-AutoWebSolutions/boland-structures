@@ -21,7 +21,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
-SITE = "https://bolandstructures.co.za/"
+SITE = "https://boland-structures.netlify.app/"
+BUILT = []  # page paths, collected for sitemap.xml
 
 BUSINESS = {
     "@type": "GeneralContractor",
@@ -95,6 +96,7 @@ def render(main, meta, out_path):
     target = ROOT / out_path
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(page, encoding="utf-8")
+    BUILT.append(meta["path"])
     print("built", out_path)
 
 
@@ -832,8 +834,35 @@ def build_team():
     }, "team.html")
 
 
+# ---------------------------------------------------------------------------
+# Sitemap + robots
+# ---------------------------------------------------------------------------
+def build_sitemap():
+    from datetime import date
+    today = date.today().isoformat()
+
+    def priority(path):
+        if path == "":
+            return "1.0"
+        if path in ("services.html", "quote.html") or path.startswith("services/"):
+            return "0.9"
+        return "0.7" if path.startswith("projects/") else "0.8"
+
+    urls = "".join(
+        f"  <url><loc>{SITE}{p}</loc><lastmod>{today}</lastmod><priority>{priority(p)}</priority></url>\n"
+        for p in sorted(BUILT, key=lambda p: (p != "", p.count("/"), p)))
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n",
+        encoding="utf-8")
+    (ROOT / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nDisallow: /src/\n\nSitemap: {SITE}sitemap.xml\n", encoding="utf-8")
+    print(f"built sitemap.xml ({len(BUILT)} urls), robots.txt")
+
+
 if __name__ == "__main__":
     build_pages()
     build_services()
     build_projects()
     build_team()
+    build_sitemap()

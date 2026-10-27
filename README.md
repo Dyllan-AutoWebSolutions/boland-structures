@@ -60,4 +60,6 @@ The Contact and Quote forms run in **demo mode**: they validate input and show t
 - Structured data: GeneralContractor (home), Service + FAQPage + BreadcrumbList (service pages), BreadcrumbList (projects), JobPosting (team), ContactPage (contact)
 - Each service page targets one local search phrase (see `keyword` in `src/content/services.py`)
 
-Before going live, change `SITE` in `build.py` to the real domain.
+- `sitemap.xml` and `robots.txt` are generated on every build
+
+Live at https://boland-structures.netlify.app/. If the domain changes, update `SITE` in `build.py` and rebuild. Every canonical URL, social preview and the sitemap follow it.
