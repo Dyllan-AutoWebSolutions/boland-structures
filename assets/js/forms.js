@@ -206,6 +206,14 @@
       var radio = quote.querySelector('input[name=service][value="' + pre.replace(/[^a-z ]/gi, "") + '"]');
       if (radio) radio.checked = true;
     }
+    // ...and the town when arriving from a location page (?location=Tulbagh)
+    var town = new URLSearchParams(window.location.search).get("location");
+    if (town) {
+      var select = quote.elements.location;
+      Array.prototype.forEach.call(select.options, function (o) {
+        if (o.value === town) select.value = town;
+      });
+    }
     show(1, false);
   }
 

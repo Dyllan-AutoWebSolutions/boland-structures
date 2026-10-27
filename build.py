@@ -199,9 +199,7 @@ def service_main(s, all_services, areas):
         </article>''' for i, (t, p) in enumerate(s["types"], 1))
     steps = "".join(f"<li class=\"step\"><h3>{h}</h3><p>{p}</p></li>" for h, p in s["steps"])
     factors = "".join(f"<li><strong>{h}</strong><span>{p}</span></li>" for h, p in s["factors"])
-    area_items = "".join(
-        f'<li{" class=\"is-base\"" if a == "Worcester" else ""}><svg aria-hidden="true"><use href="#i-pin"/></svg>{a}</li>'
-        for a in areas)
+    area_items = "".join(area_chip(a) for a in areas)
     proj_cards = "".join(project_card(PROJECTS_BY_KEY[k]) for k in s["projects"])
     faqs = "".join(
         f"""
@@ -499,7 +497,10 @@ def project_main(p, prev_p, next_p):
     R = "{{root}}"
     slug = p["slug"]
     services_links = ", ".join(f'<a href="{R}services/{s}.html">{SERVICE_NAMES[s]}</a>' for s in p["services"])
-    facts = [("Sector", p["sector"]), ("Location", p["location"]), ("Size", p["size"]),
+    loc = p["location"]
+    if loc in AREA_SLUG_BY_TOWN:
+        loc = f'<a href="{R}areas/{AREA_SLUG_BY_TOWN[loc]}.html">{loc}</a>'
+    facts = [("Sector", p["sector"]), ("Location", loc), ("Size", p["size"]),
              ("Duration", p["duration"]), ("Completed", p["year"]), ("Services", services_links)]
     facts_html = "".join(f"<div><dt>{dt}</dt><dd>{dd}</dd></div>" for dt, dd in facts)
     results = "".join(
@@ -837,6 +838,264 @@ def build_team():
 
 
 # ---------------------------------------------------------------------------
+# Location pages: areas hub + one page per town
+# ---------------------------------------------------------------------------
+AREAS_MOD = load("areas")
+AREA_PAGES = AREAS_MOD.AREAS
+AREA_SLUG_BY_TOWN = {a["town"]: a["slug"] for a in AREA_PAGES}
+
+
+def area_chip(town, current=None):
+    """Town chip: links to the town page when one exists."""
+    R = "{{root}}"
+    pin = '<svg aria-hidden="true"><use href="#i-pin"/></svg>'
+    slug = AREA_SLUG_BY_TOWN.get(town)
+    if town == current:
+        return f'<li class="is-base">{pin}{town}</li>'
+    if slug:
+        return f'<li class="is-link"><a href="{R}areas/{slug}.html">{pin}{town}</a></li>'
+    return f"<li>{pin}{town}</li>"
+
+
+def area_main(a):
+    from urllib.parse import quote
+    R = "{{root}}"
+    town = a["town"]
+    local_projects = [p for p in PROJECTS if p["location"] == a["location"]]
+    paras = "".join(f"<p>{p}</p>" for p in a["intro_paras"])
+    facts = "".join(f"<div><dt>{dt}</dt><dd>{dd}</dd></div>" for dt, dd in a["facts"])
+    points = "".join(f"<li><strong>{h}</strong><span>{t}</span></li>" for h, t in a["local_points"])
+    services = "".join(
+        f'''
+        <a class="value-card reveal" href="{R}services/{s["slug"]}.html">
+          <svg aria-hidden="true"><use href="#{s["icon"]}"/></svg>
+          <h3>{s["short"]} in {town}</h3>
+          <p>{a["service_lines"][s["slug"]]}</p>
+          <span class="text-link">Learn more <svg><use href="#i-arrow"/></svg></span>
+        </a>''' for s in SERVICES)
+    cards = "".join(project_card(p, show_services=True) for p in local_projects)
+    q_text, q_name, q_role = local_projects[0]["quote"]
+    initials = "".join(w[0] for w in q_name.replace("Dr ", "").split()[:2])
+    faqs = "".join(
+        f"""
+        <details{" open" if i == 0 else ""}>
+          <summary>{q}</summary>
+          <p>{ans}</p>
+        </details>""" for i, (q, ans) in enumerate(a["faqs"]))
+    chips = "".join(area_chip(t, current=town) for t in AREAS)
+    quote_href = f'{R}quote.html?location={quote(town)}'
+    n = len(local_projects)
+
+    return f'''<main id="main">
+
+  <!-- Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__inner">
+      <div class="page-hero__bg" aria-hidden="true">
+        <img src="{R}assets/img/areas/{a["slug"]}-hero.jpg" alt="" width="1920" height="800" fetchpriority="high">
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{R}index.html">Home</a></li>
+            <li><a href="{R}areas.html">Areas</a></li>
+            <li><span aria-current="page">{town}</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="page-title">{a["h1"]}</h1>
+        <p class="page-hero__lead">{a["hero_lead"]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section" aria-labelledby="intro-title">
+    <div class="container split">
+      <div class="split__media reveal">
+        <img src="{R}assets/img/projects/{local_projects[0]["slug"]}-cover.jpg" alt="{local_projects[0]["cover_alt"]} in {town}" width="1600" height="1200" loading="lazy">
+        <div class="split__badge"><strong>{a["facts"][1][1]}</strong><span>Projects in {town}</span></div>
+      </div>
+      <div class="split__body reveal">
+        <h2 class="section-title" id="intro-title">{a["intro_h2"]}</h2>
+        <p class="lede">{a["lede"]}</p>
+        {paras}
+        <dl class="facts">{facts}</dl>
+        <div class="svc-detail__actions">
+          <a class="btn btn--rust" href="{quote_href}">Get a quote in {town} <svg><use href="#i-arrow"/></svg></a>
+          <a class="text-link" href="tel:+27233470000">Call +27 23 347 0000 <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services in this town -->
+  <section class="section process" aria-labelledby="services-title">
+    <div class="container">
+      <h2 class="section-title section-title--center reveal" id="services-title">Our services <span>in {town}</span></h2>
+      <div class="value-grid">{services}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local conditions -->
+  <section class="section" aria-labelledby="local-title">
+    <div class="container split split--reverse">
+      <div class="split__media reveal">
+        <img src="{R}assets/img/areas/{a["slug"]}-local.jpg" alt="{a["local_alt"]}" width="1200" height="900" loading="lazy">
+      </div>
+      <div class="split__body reveal">
+        <h2 class="section-title" id="local-title">{a["local_h2"]}</h2>
+        <p>{a["local_intro"]}</p>
+        <ol class="factors">{points}</ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local projects -->
+  <section class="section process" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="projects__head reveal">
+        <h2 class="section-title" id="projects-title">Built <span>in {town}</span></h2>
+        <a class="text-link" href="{R}projects.html">All projects <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="project-grid project-grid--{n} reveal">{cards}
+      </div>
+      <figure class="quote-card quote-single reveal">
+        <span class="quote-card__mark" aria-hidden="true"><svg><use href="#i-quote"/></svg></span>
+        <blockquote>{q_text}</blockquote>
+        <figcaption><span class="quote-card__avatar" aria-hidden="true">{initials}</span><div><cite>{q_name}</cite><span>{q_role}</span></div></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 class="section-title section-title--center reveal" id="faq-title">Building in {town}: <span>your questions</span></h2>
+      <div class="faq reveal">{faqs}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby areas -->
+  <section class="band" aria-labelledby="areas-title">
+    <div class="band__bg" aria-hidden="true"><img src="{R}assets/img/band-dusk.jpg" alt="" width="1920" height="900" loading="lazy"></div>
+    <div class="container band__inner">
+      <div class="band__top reveal">
+        <div>
+          <span class="band__rule"></span>
+          <h2 class="band__title" id="areas-title">Other areas <span>we serve</span></h2>
+          <p class="band__sub">Across the Boland and Breede River Valley</p>
+        </div>
+      </div>
+      <ul class="areas reveal">{chips}</ul>
+    </div>
+  </section>
+{cta_block(f"Building in {town}?", "Book a free site visit and get a fixed-price quote within 5 working days.", f"Get a quote in {town}", quote_href)}
+</main>'''
+
+
+def areas_hub_main():
+    R = "{{root}}"
+    cards = "".join(
+        f'''
+        <a class="project-card" href="{R}areas/{a["slug"]}.html">
+          <img src="{R}assets/img/areas/{a["slug"]}-hero.jpg" alt="Landscape near {a["town"]}" width="1920" height="800" loading="lazy">
+          <div class="project-card__body">
+            <span class="project-card__tag">{a["facts"][0][1]}</span>
+            <h3>{a["town"]}</h3>
+            <p class="project-card__meta">{a["facts"][1][1]} projects · {a["facts"][2][1]} Municipality</p>
+          </div>
+        </a>''' for a in AREA_PAGES)
+    chips = "".join(area_chip(t) for t in AREAS)
+    return f'''<main id="main">
+
+  <!-- Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__inner">
+      <div class="page-hero__bg" style="--focus: 50% 60%" aria-hidden="true">
+        <img src="{R}assets/img/page-hero-areas.jpg" alt="" width="1920" height="800" fetchpriority="high">
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{R}index.html">Home</a></li>
+            <li><span aria-current="page">Areas we serve</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="page-title">Areas <span>we serve</span></h1>
+        <p class="page-hero__lead">From our yard in Worcester we build across the Boland and Breede River Valley, mostly within an hour's drive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="towns-title">
+    <div class="container">
+      <h2 class="section-title section-title--center reveal" id="towns-title">Where <span>we build</span></h2>
+      <p class="section-lead section-lead--center reveal">Each town has its own conditions, from Rawsonville's clay to Tulbagh's heritage rules. Choose a town to see the projects we've built there and what building there involves.</p>
+      <div class="project-grid area-grid reveal">{cards}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="areas-title">
+    <div class="band__bg" aria-hidden="true"><img src="{R}assets/img/band-dusk.jpg" alt="" width="1920" height="900" loading="lazy"></div>
+    <div class="container band__inner">
+      <div class="band__top reveal">
+        <div>
+          <span class="band__rule"></span>
+          <h2 class="band__title" id="areas-title">All {len(AREAS)} <span>towns</span></h2>
+          <p class="band__sub">Highlighted towns have their own page</p>
+        </div>
+      </div>
+      <p class="areas__intro reveal">We also build regularly in the towns below. Don't see yours? If it's in the Western Cape and within about 90 minutes of Worcester, ask us anyway.</p>
+      <ul class="areas reveal">{chips}</ul>
+    </div>
+  </section>
+{cta_block("Building somewhere in the Boland?", "Tell us where and what. We'll book a free site visit and send a fixed-price quote.", "Get a quote", R + "quote.html")}
+</main>'''
+
+
+def build_areas():
+    breadcrumb = lambda items: {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": i, "name": n, "item": u}
+                            for i, (n, u) in enumerate(items, 1)],
+    }
+    render(areas_hub_main(), {
+        "title": "Areas We Serve | Builders Across the Boland | Boland Structures",
+        "description": "Boland Structures builds across the Boland and Breede River Valley from our Worcester yard: Worcester, De Doorns, Rawsonville, Tulbagh, Robertson, Ceres, Paarl and more.",
+        "preload": "assets/img/page-hero-areas.jpg",
+        "nav": "areas",
+        "path": "areas.html",
+        "head_extra": jsonld({"@context": "https://schema.org", **breadcrumb(
+            [("Home", SITE), ("Areas we serve", SITE + "areas.html")])}),
+    }, "areas.html")
+
+    for a in AREA_PAGES:
+        path = f"areas/{a['slug']}.html"
+        url = SITE + path
+        graph = [
+            {**BUSINESS, "areaServed": {"@type": "City", "name": a["town"],
+                                        "containedInPlace": {"@type": "State", "name": "Western Cape"}}},
+            {"@type": "WebPage", "@id": url, "url": url, "name": a["title"],
+             "about": {"@id": BUSINESS["@id"]}},
+            breadcrumb([("Home", SITE), ("Areas we serve", SITE + "areas.html"), (a["town"], url)]),
+            {"@type": "FAQPage", "mainEntity": [
+                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": strip_tags(ans)}}
+                for q, ans in a["faqs"]]},
+        ]
+        render(area_main(a), {
+            "title": a["title"],
+            "description": a["description"],
+            "preload": f"assets/img/areas/{a['slug']}-hero.jpg",
+            "nav": "area-detail",
+            "path": path,
+            "head_extra": jsonld({"@context": "https://schema.org", "@graph": graph}),
+        }, path)
+
+
+# ---------------------------------------------------------------------------
 # Sitemap + robots
 # ---------------------------------------------------------------------------
 def build_sitemap():
@@ -867,4 +1126,5 @@ if __name__ == "__main__":
     build_services()
     build_projects()
     build_team()
+    build_areas()
     build_sitemap()

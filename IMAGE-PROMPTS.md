@@ -106,3 +106,19 @@ The three leadership portraits (`leader-1..3.jpg`) are shared with the Company p
 |---|---|---|---|
 | `page-hero-contact.jpg` | 1920×800 (12:5) | Contact page banner (navy overlay) | A single orange hard hat resting on fresh asphalt, building site softly blurred behind, warm afternoon light, lots of empty space on the left. |
 | `page-hero-quote.jpg` | 1920×800 (12:5) | Quote page banner (navy overlay) | A row of yellow hard hats on a weathered timber workbench in a site office, moody side light, shallow depth of field. |
+
+### Location pages (`areas.html` and `areas/*.html`)
+
+Each town page also reuses the cover photo of a project built in that town (from `assets/img/projects/`).
+
+| File | Size | Used in | Prompt |
+|---|---|---|---|
+| `page-hero-areas.jpg` (in `assets/img/`) | 1920×800 | Areas hub banner | Wide view of the Breede River Valley from a hilltop, vineyards and farms below, Boland mountains under dramatic clouds. |
+| `areas/worcester-hero.jpg` | 1920×800 | Worcester page banner and hub card | Aerial view of Worcester, Western Cape: town grid, church spire and suburbs, Brandwacht mountains behind, golden hour. |
+| `areas/worcester-local.jpg` | 1200×900 | Worcester: what to know | A crew wet-curing a freshly poured concrete slab under shade cloth on a very hot, bright summer day. |
+| `areas/de-doorns-hero.jpg` | 1920×800 | De Doorns page banner and hub card | The Hex River Valley at dawn: rows of table-grape vineyards under white netting, mist in the valley, mountains with a dusting of snow. |
+| `areas/de-doorns-local.jpg` | 1200×900 | De Doorns: what to know | Close-up of green table grapes hanging under protective netting, a packhouse roof visible behind. |
+| `areas/rawsonville-hero.jpg` | 1920×800 | Rawsonville page banner and hub card | Vineyards along the Breede River near Rawsonville, a wine cellar among the vines, mountains behind, late afternoon. |
+| `areas/rawsonville-local.jpg` | 1200×900 | Rawsonville: what to know | Steel reinforcement laid for a raft foundation on dark clay soil, with formwork around the edges. |
+| `areas/tulbagh-hero.jpg` | 1920×800 | Tulbagh page banner and hub card | The Tulbagh valley with the Witzenberg mountains, vineyards and fynbos in the foreground, clear blue sky. |
+| `areas/tulbagh-local.jpg` | 1200×900 | Tulbagh: what to know | A craftsman applying lime plaster by hand to a thick old wall inside a Cape Dutch homestead. |

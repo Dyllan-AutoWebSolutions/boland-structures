@@ -1,6 +1,6 @@
 # Boland Structures: construction website (portfolio concept)
 
-A 19-page static website for a fictional construction company in Worcester, Western Cape. It's built mobile-first in plain HTML, CSS and JavaScript, with no framework and no dependencies.
+A 24-page static website for a fictional construction company in Worcester, Western Cape. It's built mobile-first in plain HTML, CSS and JavaScript, with no framework and no dependencies.
 
 ## Pages
 
@@ -11,6 +11,7 @@ A 19-page static website for a fictional construction company in Worcester, West
 | Services hub + 4 service pages | `services.html`, `services/*.html` |
 | Projects listing + 8 case studies | `projects.html`, `projects/*.html` |
 | Team | `team.html` |
+| Areas hub + 4 town pages | `areas.html`, `areas/*.html` |
 | Contact | `contact.html` |
 | Quote (4-step form) | `quote.html` |
 
@@ -29,10 +30,17 @@ python build.py
 | Service pages | `src/content/services.py` |
 | Projects and case studies | `src/content/projects.py` |
 | Team, jobs, apprenticeships | `src/content/team.py` |
+| Location (town) pages | `src/content/areas.py` |
 | Styles | `assets/css/main.css` (colour tokens at the top) |
 | Scripts | `assets/js/main.js` (site), `assets/js/forms.js` (forms) |
 
 Python 3 is the only requirement.
+
+## Adding a location page
+
+Add a town to `src/content/areas.py` and rebuild. The page, the hub card, the town links on service and project pages, and the sitemap all update.
+
+Only add a town when you can write content that is true for that town alone: projects built there, local building conditions, its municipality and real FAQs. The test is this: if you swap the town name for another town and the page still reads correctly, it's a doorway page. Google treats those as spam, so don't publish it.
 
 ## Run locally
 

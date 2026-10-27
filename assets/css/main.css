@@ -942,6 +942,21 @@ a.value-card:hover .text-link svg { transform: translateX(4px); }
 .areas svg { width: 14px; height: 14px; color: var(--rust); }
 .areas li.is-base { background: var(--rust); border-color: var(--rust); }
 .areas li.is-base svg { color: var(--white); }
+.areas li.is-link { padding: 0; }
+.areas li.is-link a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; transition: background-color .2s, border-color .2s; }
+.areas li.is-link { border-color: rgba(200,103,63,.7); }
+.areas li.is-link:hover { background: var(--rust); border-color: var(--rust); }
+.areas li.is-link:hover svg { color: var(--white); }
+@media (min-width: 48em) {
+  .project-grid.area-grid { grid-template-columns: 1fr 1fr; }
+  .project-grid.project-grid--1 { grid-template-columns: 1fr; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .project-grid--1 .project-card { aspect-ratio: 16 / 9; }
+}
+@media (min-width: 64em) {
+  .project-grid.area-grid { grid-template-columns: 1fr 1fr; }
+  .area-grid .project-card { aspect-ratio: 16 / 9; }
+  .project-grid.project-grid--2 { grid-template-columns: 1fr 1fr; }
+}
 
 @media (min-width: 48em) {
   .type-grid { grid-template-columns: 1fr 1fr; }
@@ -1420,6 +1435,8 @@ a.contact-card:hover { border-color: var(--rust); transform: translateY(-3px); b
   .form-grid--2 .field--full { grid-column: 1 / -1; }
   .project-facts { grid-template-columns: repeat(3, 1fr); }
   .map { min-height: 240px; }
+  .project-grid.project-grid--1 { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .project-grid--1 .project-card { aspect-ratio: 16 / 9; }
 
   /* Lightbox: give the photo the full height */
   .lightbox figure { padding: 12px 72px; }
