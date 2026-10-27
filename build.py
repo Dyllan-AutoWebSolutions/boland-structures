@@ -56,6 +56,13 @@ def read(path):
 PARTS = {name: read(f"partials/{name}.html") for name in ("head", "sprite", "header", "footer")}
 
 
+def asset_version(path):
+    """Short content hash for cache-busting (?v=...). Changes whenever the file does,
+    so the week-long asset cache in netlify.toml never serves stale CSS/JS."""
+    import hashlib
+    return hashlib.md5((ROOT / path).read_bytes()).hexdigest()[:8]
+
+
 def jsonld(data):
     payload = json.dumps(data, ensure_ascii=False, indent=2)
     return f'  <script type="application/ld+json">\n{payload}\n  </script>\n'
@@ -78,6 +85,7 @@ def render(main, meta, out_path):
         return ""
 
     page = re.sub(r"\{\{cur:([\w-]+)\}\}", current, page)
+    page = re.sub(r"\{\{v:([\w/.-]+)\}\}", lambda m: asset_version(m.group(1)), page)
     values = {
         "title": html.escape(meta["title"]),
         "description": html.escape(meta["description"]),
@@ -85,7 +93,7 @@ def render(main, meta, out_path):
         "path": meta["path"],
         "site": SITE,
         "head_extra": meta.get("head_extra", ""),
-        "scripts": "".join(f'<script src="{root}{src}"></script>\n' for src in meta.get("scripts", [])),
+        "scripts": "".join(f'<script src="{root}{src}?v={asset_version(src)}"></script>\n' for src in meta.get("scripts", [])),
         "root": root,
     }
     for key, val in values.items():
