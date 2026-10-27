@@ -1,0 +1,165 @@
+<!--meta {"title": "Contact Boland Structures | Builders in Worcester, Western Cape", "description": "Contact Boland Structures in Worcester. Call +27 23 347 0000, email hello@bolandstructures.co.za or visit our yard at 18 Durban Street. Mon–Fri 07:00–17:00.", "preload": "assets/img/page-hero-contact.jpg", "nav": "contact", "path": "contact.html", "scripts": ["assets/js/forms.js"], "schema": "contact"} -->
+<main id="main">
+
+  <!-- Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__inner">
+      <div class="page-hero__bg" style="--focus: 40% 60%" aria-hidden="true">
+        <img src="assets/img/page-hero-contact.jpg" alt="" width="1920" height="800" fetchpriority="high">
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Contact</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="page-title">Let's <span>talk</span></h1>
+        <p class="page-hero__lead">Call, email or stop by our Worcester yard. We answer every enquiry within one working day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact cards -->
+  <section class="section" style="padding-bottom:0" aria-label="Ways to contact us">
+    <div class="container contact-cards reveal">
+      <a class="contact-card" href="tel:+27233470000">
+        <span class="contact-card__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <div><h3>Call us</h3><strong>+27 23 347 0000</strong><span>Mon–Fri 07:00–17:00</span></div>
+      </a>
+      <a class="contact-card" href="mailto:hello@bolandstructures.co.za">
+        <span class="contact-card__icon"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <div><h3>Email us</h3><strong>hello@bolandstructures.co.za</strong><span>Reply within 1 working day</span></div>
+      </a>
+      <a class="contact-card" href="https://www.google.com/maps/dir/?api=1&amp;destination=18+Durban+Street+Worcester+6850" target="_blank" rel="noopener">
+        <span class="contact-card__icon"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+        <div><h3>Visit the yard</h3><strong>18 Durban Street, Worcester</strong><span>Get directions</span></div>
+      </a>
+      <div class="contact-card">
+        <span class="contact-card__icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+        <div><h3>Office hours</h3><strong>Mon–Fri 07:00–17:00</strong><span>Closed weekends &amp; public holidays</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + map -->
+  <section class="section" aria-labelledby="form-title">
+    <div class="container contact-layout">
+      <div class="form-card reveal">
+        <div data-form-body>
+          <h2 class="form-card__title" id="form-title">Send us a <span>message</span></h2>
+          <p class="form-card__intro">For general questions, suppliers and careers. Need a price? Use our <a class="text-link" style="min-height:0" href="quote.html">quote form</a> instead.</p>
+          <form class="form-grid form-grid--2" data-validate data-form="contact" novalidate>
+            <div class="field">
+              <label for="c-name">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-err">
+              <p class="field__error" id="c-name-err">Please enter your name.</p>
+            </div>
+            <div class="field">
+              <label for="c-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="(\+27|0)[\s\-]?\d{2}[\s\-]?\d{3}[\s\-]?\d{4}" placeholder="082 123 4567" aria-describedby="c-phone-err">
+              <p class="field__error" id="c-phone-err">Please enter a South African number, for example 082 123 4567.</p>
+            </div>
+            <div class="field">
+              <label for="c-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="c-email" name="email" type="email" autocomplete="email" required aria-describedby="c-email-err">
+              <p class="field__error" id="c-email-err">Please enter a valid email address.</p>
+            </div>
+            <div class="field">
+              <label for="c-topic">What's it about? <span class="req" aria-hidden="true">*</span></label>
+              <select id="c-topic" name="topic" required aria-describedby="c-topic-err">
+                <option value="">Choose a topic</option>
+                <option>General question</option>
+                <option>An existing project</option>
+                <option>Careers &amp; apprenticeships</option>
+                <option>Supplier or subcontractor</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__error" id="c-topic-err">Please choose a topic.</p>
+            </div>
+            <div class="field field--full">
+              <label for="c-message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="c-message" name="message" required minlength="20" aria-describedby="c-message-err"></textarea>
+              <p class="field__error" id="c-message-err">Please write at least 20 characters so we can help.</p>
+            </div>
+            <div class="field field--full">
+              <label class="check"><input type="checkbox" name="consent" required aria-describedby="c-consent-err"><span>I agree that Boland Structures may use these details to reply to my enquiry, as required by POPIA. We never share or sell your information.</span></label>
+              <p class="field__error" id="c-consent-err">Please tick the box so we can reply to you.</p>
+            </div>
+            <div class="field--full form-actions" style="margin-top:4px">
+              <button class="btn btn--rust" type="submit">Send message <svg><use href="#i-arrow"/></svg></button>
+            </div>
+          </form>
+        </div>
+        <div class="form-success" data-form-success hidden tabindex="-1">
+          <div class="form-success__icon"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
+          <h2>Message sent</h2>
+          <p>Thanks <span data-success-name></span>. We'll reply within one working day, usually much sooner.</p>
+          <span class="form-success__ref" data-success-ref></span>
+        </div>
+      </div>
+
+      <aside class="reveal" aria-label="Location and hours">
+        <div class="map" data-map>
+          <div class="map__placeholder">
+            <span class="map__pin"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <strong>18 Durban Street, Worcester, 6850</strong>
+            <p>The map loads from Google when you ask for it, so nothing is shared until then.</p>
+            <div class="map__actions">
+              <button class="btn btn--rust" type="button" data-map-load>Show map</button>
+              <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=18+Durban+Street+Worcester+6850" target="_blank" rel="noopener">Directions</a>
+            </div>
+          </div>
+        </div>
+        <div class="side-card" style="margin-top:16px">
+          <h3>Before you <span>visit</span></h3>
+          <ol>
+            <li><strong>Book ahead</strong>Our project managers are often on site, so call first to make sure the right person is in.</li>
+            <li><strong>Bring your plans</strong>Paper or on a tablet. We'll look through them with you at the yard.</li>
+            <li><strong>Parking</strong>Free parking inside the yard gate. Use the visitors' bays on the left.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section process" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 class="section-title section-title--center reveal" id="faq-title">Before you <span>get in touch</span></h2>
+      <div class="faq reveal">
+        <details open>
+          <summary>How quickly will you reply?</summary>
+          <p>Within one working day, usually the same day. Quote requests get a call from a project manager to book a site visit.</p>
+        </details>
+        <details>
+          <summary>Do you work outside Worcester?</summary>
+          <p>Yes. We build across the Boland and Breede River Valley, including Rawsonville, De Doorns, Robertson, Ceres, Tulbagh, Wellington and Paarl.</p>
+        </details>
+        <details>
+          <summary>Is the first site visit free?</summary>
+          <p>Yes. We'll meet you on site, walk the ground and talk through your project at no cost and with no obligation.</p>
+        </details>
+        <details>
+          <summary>I'm a supplier or subcontractor. Who do I contact?</summary>
+          <p>Use the form above and choose "Supplier or subcontractor". Our procurement team keeps an approved list and reviews it every quarter.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta__bg" aria-hidden="true"><img src="assets/img/cta-cranes.jpg" alt="" width="1920" height="900" loading="lazy"></div>
+    <div class="container cta__inner">
+      <div>
+        <h2 id="cta-title">Need a price?</h2>
+        <p>Our quote form takes about 3 minutes. You'll get a fixed-price quote within 5 working days of your site visit.</p>
+      </div>
+      <div class="cta__actions">
+        <a class="btn btn--navy" href="quote.html">Get a quote <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="tel:+27233470000">Call us</a>
+      </div>
+    </div>
+  </section>
+</main>

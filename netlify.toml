@@ -1,0 +1,18 @@
+# Netlify config. The built HTML is committed, so Netlify publishes the
+# repo root as-is with no build step. Run `python build.py` locally and
+# commit the output before pushing.
+[build]
+  publish = "."
+  command = ""
+
+# Cache images, CSS and JS for a week; HTML always revalidates
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,78 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Top bar (desktop) -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__info">
+      <span><svg><use href="#i-pin"/></svg>18 Durban Street, Worcester, 6850</span>
+      <a href="tel:+27233470000"><svg><use href="#i-phone"/></svg>+27 23 347 0000</a>
+      <span><svg><use href="#i-clock"/></svg>Mon–Fri 07:00–17:00</span>
+    </div>
+    <div class="topbar__social">
+      <a href="#" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+      <a class="topbar__cta" href="{{root}}quote.html">Get a quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="{{root}}index.html" aria-label="Boland Structures home">
+      <svg class="logo__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span>
+        <span class="logo__name">BOLAND STRUCTURES</span>
+        <span class="logo__tag">Construction Co.</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav__list">
+        <li><a href="{{root}}index.html"{{cur:home}}>Home</a></li>
+        <li><a href="{{root}}company.html"{{cur:company}}>Company</a></li>
+        <li class="nav__item--sub">
+          <a href="{{root}}services.html"{{cur:services}}>Services <svg class="nav__caret" aria-hidden="true"><use href="#i-chev-r"/></svg></a>
+          <ul class="nav__sub" aria-label="Services">
+            <li><a href="{{root}}services/construction.html"{{cur:svc-construction}}><svg aria-hidden="true"><use href="#i-building"/></svg>Construction</a></li>
+            <li><a href="{{root}}services/renovation.html"{{cur:svc-renovation}}><svg aria-hidden="true"><use href="#i-hammer"/></svg>Renovation</a></li>
+            <li><a href="{{root}}services/planning.html"{{cur:svc-planning}}><svg aria-hidden="true"><use href="#i-blueprint"/></svg>Planning</a></li>
+            <li><a href="{{root}}services/concrete.html"{{cur:svc-concrete}}><svg aria-hidden="true"><use href="#i-mixer"/></svg>Concrete works</a></li>
+          </ul>
+        </li>
+        <li><a href="{{root}}projects.html"{{cur:projects}}>Projects</a></li>
+        <li><a href="{{root}}team.html"{{cur:team}}>Team</a></li>
+        <li><a href="{{root}}contact.html"{{cur:contact}}>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" type="button" aria-label="Search"><svg><use href="#i-search"/></svg></button>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+  <ul class="mobile-nav__list">
+    <li><a href="{{root}}index.html"{{cur:home}}>Home <svg><use href="#i-chev-r"/></svg></a></li>
+    <li><a href="{{root}}company.html"{{cur:company}}>Company <svg><use href="#i-chev-r"/></svg></a></li>
+    <li><a href="{{root}}services.html"{{cur:services}}>Services <svg><use href="#i-chev-r"/></svg></a>
+      <ul class="mobile-nav__sub">
+        <li><a href="{{root}}services/construction.html"{{cur:svc-construction}}>Construction</a></li>
+        <li><a href="{{root}}services/renovation.html"{{cur:svc-renovation}}>Renovation</a></li>
+        <li><a href="{{root}}services/planning.html"{{cur:svc-planning}}>Planning</a></li>
+        <li><a href="{{root}}services/concrete.html"{{cur:svc-concrete}}>Concrete works</a></li>
+      </ul>
+    </li>
+    <li><a href="{{root}}projects.html"{{cur:projects}}>Projects <svg><use href="#i-chev-r"/></svg></a></li>
+    <li><a href="{{root}}team.html"{{cur:team}}>Team <svg><use href="#i-chev-r"/></svg></a></li>
+    <li><a href="{{root}}contact.html"{{cur:contact}}>Contact <svg><use href="#i-chev-r"/></svg></a></li>
+  </ul>
+  <div class="mobile-nav__foot">
+    <a class="btn btn--rust" href="{{root}}quote.html">Get a quote <svg><use href="#i-arrow"/></svg></a>
+    <a class="btn btn--ghost" href="tel:+27233470000">Call +27 23 347 0000</a>
+    <p class="mobile-nav__contact">18 Durban Street, Worcester, 6850<br>Mon–Fri 07:00–17:00</p>
+  </div>
+</nav>
+

@@ -1,0 +1,219 @@
+<!--meta {"title": "Get a Building Quote in Worcester | Boland Structures", "description": "Request a fixed-price building quote from Boland Structures in Worcester. Tell us about your project in 3 minutes and we'll call you within one working day to book a free site visit.", "preload": "assets/img/page-hero-quote.jpg", "nav": "quote", "path": "quote.html", "scripts": ["assets/js/forms.js"], "schema": "quote"} -->
+<main id="main">
+
+  <!-- Page hero -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="page-hero__inner">
+      <div class="page-hero__bg" style="--focus: 60% 40%" aria-hidden="true">
+        <img src="assets/img/page-hero-quote.jpg" alt="" width="1920" height="800" fetchpriority="high">
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><span aria-current="page">Get a quote</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-hero__title" id="page-title">Get a <span>fixed-price quote</span></h1>
+        <p class="page-hero__lead">Four short steps, about 3 minutes. We'll call you within one working day to book a free site visit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Quote request">
+    <div class="container contact-layout">
+      <div class="form-card reveal">
+        <div data-form-body>
+          <ol class="stepper" aria-hidden="true">
+            <li class="is-current"><span class="stepper__label">Project</span></li>
+            <li><span class="stepper__label">Details</span></li>
+            <li><span class="stepper__label">Your details</span></li>
+            <li><span class="stepper__label">Review</span></li>
+          </ol>
+
+          <form data-validate data-form="quote" data-steps novalidate>
+
+            <!-- Step 1 -->
+            <div class="form-step" data-step="1">
+              <p class="form-step__count">Step 1 of 4</p>
+              <h2 class="form-step__title" tabindex="-1">What are you <span>building?</span></h2>
+              <div class="form-grid">
+                <fieldset class="fieldset" data-group="service">
+                  <legend>Service <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="choice-grid">
+                    <div class="choice"><input type="radio" id="q-svc-construction" name="service" value="construction" required><label for="q-svc-construction"><svg aria-hidden="true"><use href="#i-building"/></svg>New build<small>Homes, cellars, warehouses</small></label></div>
+                    <div class="choice"><input type="radio" id="q-svc-renovation" name="service" value="renovation"><label for="q-svc-renovation"><svg aria-hidden="true"><use href="#i-hammer"/></svg>Renovation<small>Extensions, kitchens, conversions</small></label></div>
+                    <div class="choice"><input type="radio" id="q-svc-planning" name="service" value="planning"><label for="q-svc-planning"><svg aria-hidden="true"><use href="#i-blueprint"/></svg>Planning<small>Plans, approvals, costing</small></label></div>
+                    <div class="choice"><input type="radio" id="q-svc-concrete" name="service" value="concrete"><label for="q-svc-concrete"><svg aria-hidden="true"><use href="#i-mixer"/></svg>Concrete<small>Slabs, foundations, walls</small></label></div>
+                    <div class="choice"><input type="radio" id="q-svc-unsure" name="service" value="not sure"><label for="q-svc-unsure"><svg aria-hidden="true"><use href="#i-search"/></svg>Not sure<small>Help me work it out</small></label></div>
+                  </div>
+                  <p class="field__error">Please choose a service.</p>
+                </fieldset>
+                <fieldset class="fieldset" data-group="sector">
+                  <legend>Who is it for? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="pills">
+                    <div class="pill"><input type="radio" id="q-sec-home" name="sector" value="My home" required><label for="q-sec-home">My home</label></div>
+                    <div class="pill"><input type="radio" id="q-sec-farm" name="sector" value="A farm or wine estate"><label for="q-sec-farm">A farm or wine estate</label></div>
+                    <div class="pill"><input type="radio" id="q-sec-business" name="sector" value="A business"><label for="q-sec-business">A business</label></div>
+                    <div class="pill"><input type="radio" id="q-sec-public" name="sector" value="A school or public body"><label for="q-sec-public">A school or public body</label></div>
+                  </div>
+                  <p class="field__error">Please choose one.</p>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="form-step" data-step="2" hidden>
+              <p class="form-step__count">Step 2 of 4</p>
+              <h2 class="form-step__title" tabindex="-1">Project <span>details</span></h2>
+              <div class="form-grid form-grid--2">
+                <div class="field">
+                  <label for="q-location">Where is the site? <span class="req" aria-hidden="true">*</span></label>
+                  <select id="q-location" name="location" required>
+                    <option value="">Choose a town</option>
+                    <option>Worcester</option><option>Rawsonville</option><option>De Doorns</option><option>Touws River</option>
+                    <option>Robertson</option><option>Ashton</option><option>Montagu</option><option>Ceres</option>
+                    <option>Wolseley</option><option>Tulbagh</option><option>Wellington</option><option>Paarl</option>
+                    <option>Somewhere else</option>
+                  </select>
+                  <p class="field__error">Please choose where the site is.</p>
+                </div>
+                <div class="field">
+                  <label for="q-size">Approximate size <span class="opt">(optional)</span></label>
+                  <select id="q-size" name="size">
+                    <option value="">Not sure yet</option>
+                    <option>Under 100 m²</option><option>100–300 m²</option><option>300–1 000 m²</option><option>Over 1 000 m²</option>
+                  </select>
+                </div>
+                <fieldset class="fieldset field--full" data-group="budget">
+                  <legend>Rough budget <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="pills">
+                    <div class="pill"><input type="radio" id="q-b1" name="budget" value="Under R500 000" required><label for="q-b1">Under R500k</label></div>
+                    <div class="pill"><input type="radio" id="q-b2" name="budget" value="R500 000 – R1.5 million"><label for="q-b2">R500k – R1.5m</label></div>
+                    <div class="pill"><input type="radio" id="q-b3" name="budget" value="R1.5 – R5 million"><label for="q-b3">R1.5m – R5m</label></div>
+                    <div class="pill"><input type="radio" id="q-b4" name="budget" value="Over R5 million"><label for="q-b4">Over R5m</label></div>
+                    <div class="pill"><input type="radio" id="q-b5" name="budget" value="Not sure yet"><label for="q-b5">Not sure yet</label></div>
+                  </div>
+                  <p class="field__error">Please choose a budget range, or "Not sure yet".</p>
+                </fieldset>
+                <fieldset class="fieldset field--full" data-group="start">
+                  <legend>When do you want to start? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="pills">
+                    <div class="pill"><input type="radio" id="q-t1" name="start" value="As soon as possible" required><label for="q-t1">As soon as possible</label></div>
+                    <div class="pill"><input type="radio" id="q-t2" name="start" value="In 1–3 months"><label for="q-t2">1–3 months</label></div>
+                    <div class="pill"><input type="radio" id="q-t3" name="start" value="In 3–6 months"><label for="q-t3">3–6 months</label></div>
+                    <div class="pill"><input type="radio" id="q-t4" name="start" value="Later than 6 months"><label for="q-t4">6+ months</label></div>
+                  </div>
+                  <p class="field__error">Please choose a start date.</p>
+                </fieldset>
+                <fieldset class="fieldset field--full" data-group="plans">
+                  <legend>Do you have plans? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="pills">
+                    <div class="pill"><input type="radio" id="q-p1" name="plans" value="Yes, approved by council" required><label for="q-p1">Yes, approved</label></div>
+                    <div class="pill"><input type="radio" id="q-p2" name="plans" value="Drawn, not yet approved"><label for="q-p2">Drawn, not approved</label></div>
+                    <div class="pill"><input type="radio" id="q-p3" name="plans" value="No, just an idea"><label for="q-p3">No, just an idea</label></div>
+                  </div>
+                  <p class="field__error">Please choose one.</p>
+                </fieldset>
+                <div class="field field--full">
+                  <label for="q-desc">Tell us about the project <span class="req" aria-hidden="true">*</span></label>
+                  <textarea id="q-desc" name="description" required minlength="30" placeholder="For example: a 3-bedroom extension to our house in Worcester, with a new bathroom and double garage." aria-describedby="q-desc-hint q-desc-err"></textarea>
+                  <p class="field__hint" id="q-desc-hint">You can email us plans or photos after you send this request.</p>
+                  <p class="field__error" id="q-desc-err">Please write at least 30 characters.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="form-step" data-step="3" hidden>
+              <p class="form-step__count">Step 3 of 4</p>
+              <h2 class="form-step__title" tabindex="-1">Your <span>details</span></h2>
+              <div class="form-grid form-grid--2">
+                <div class="field">
+                  <label for="q-name">Full name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="q-name" name="name" type="text" autocomplete="name" required aria-describedby="q-name-err">
+                  <p class="field__error" id="q-name-err">Please enter your name.</p>
+                </div>
+                <div class="field">
+                  <label for="q-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                  <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="(\+27|0)[\s\-]?\d{2}[\s\-]?\d{3}[\s\-]?\d{4}" placeholder="082 123 4567" aria-describedby="q-phone-err">
+                  <p class="field__error" id="q-phone-err">Please enter a South African number, for example 082 123 4567.</p>
+                </div>
+                <div class="field field--full">
+                  <label for="q-email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input id="q-email" name="email" type="email" autocomplete="email" required aria-describedby="q-email-err">
+                  <p class="field__error" id="q-email-err">Please enter a valid email address.</p>
+                </div>
+                <fieldset class="fieldset field--full" data-group="contact_method">
+                  <legend>How should we contact you? <span class="req" aria-hidden="true">*</span></legend>
+                  <div class="pills">
+                    <div class="pill"><input type="radio" id="q-cm1" name="contact_method" value="Phone call" required><label for="q-cm1">Phone call</label></div>
+                    <div class="pill"><input type="radio" id="q-cm2" name="contact_method" value="WhatsApp"><label for="q-cm2">WhatsApp</label></div>
+                    <div class="pill"><input type="radio" id="q-cm3" name="contact_method" value="Email"><label for="q-cm3">Email</label></div>
+                  </div>
+                  <p class="field__error">Please choose how we should contact you.</p>
+                </fieldset>
+                <div class="field field--full">
+                  <label class="check"><input type="checkbox" name="consent" required aria-describedby="q-consent-err"><span>I agree that Boland Structures may use these details to prepare my quote and contact me about it, as required by POPIA. We never share or sell your information.</span></label>
+                  <p class="field__error" id="q-consent-err">Please tick the box so we can prepare your quote.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="form-step" data-step="4" hidden>
+              <p class="form-step__count">Step 4 of 4</p>
+              <h2 class="form-step__title" tabindex="-1">Check <span>and send</span></h2>
+              <p class="form-card__intro">Make sure everything looks right. Use Back to change anything.</p>
+              <dl class="review" data-review></dl>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn--outline" type="button" data-prev hidden>Back</button>
+              <button class="btn btn--rust" type="button" data-next>Next step <svg><use href="#i-arrow"/></svg></button>
+              <button class="btn btn--rust" type="submit" data-submit hidden>Send quote request <svg><use href="#i-arrow"/></svg></button>
+            </div>
+            <p class="form-note">No cost and no obligation. We'll call you within one working day.</p>
+          </form>
+        </div>
+
+        <div class="form-success" data-form-success hidden tabindex="-1">
+          <div class="form-success__icon"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
+          <h2>Quote request sent</h2>
+          <p>Thanks <span data-success-name></span>. A project manager will contact you within one working day to book your free site visit.</p>
+          <span class="form-success__ref" data-success-ref></span>
+          <ol class="process__grid" style="list-style:none;padding:0">
+            <li class="step"><h3>We call you</h3><p>Within one working day, to talk through the project and book a visit.</p></li>
+            <li class="step"><h3>Site visit</h3><p>We walk the site with you. Free, with no obligation.</p></li>
+            <li class="step"><h3>Fixed price</h3><p>An itemised fixed-price quote within 5 working days.</p></li>
+            <li class="step"><h3>You decide</h3><p>No pressure. The quote is valid for 30 days.</p></li>
+          </ol>
+        </div>
+      </div>
+
+      <aside class="reveal" aria-label="What happens next">
+        <div class="side-card">
+          <h2>What happens <span>next</span></h2>
+          <ol>
+            <li><strong>We call you</strong>Within one working day of your request.</li>
+            <li><strong>Free site visit</strong>We walk the ground with you and check access, slope and services.</li>
+            <li><strong>Fixed-price quote</strong>Itemised, within 5 working days of final plans.</li>
+          </ol>
+          <div class="side-card__contact">
+            <a href="tel:+27233470000"><svg aria-hidden="true"><use href="#i-phone"/></svg>+27 23 347 0000</a>
+            <a href="mailto:hello@bolandstructures.co.za"><svg aria-hidden="true"><use href="#i-mail"/></svg>hello@bolandstructures.co.za</a>
+          </div>
+        </div>
+        <div class="side-card side-card--light">
+          <h3 style="color:var(--navy)">Why <span>Boland Structures</span></h3>
+          <ul class="checklist">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>The price you sign is the price you pay</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>NHBRC registered, CIDB 6GB</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>5-year workmanship guarantee</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>340+ projects since 2004</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
